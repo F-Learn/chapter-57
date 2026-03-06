@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 57: Burn Injury – NCLEX Review</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(145deg, #e27f7f, #c75b5b);
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+        
+        .container {
+            width: 100vw;
+            height: 100vh;
+            background: #fce4e4;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 0 40px rgba(0,0,0,0.2);
+        }
+        
+        .header {
+            background: linear-gradient(145deg, #b34242, #862a2a);
+            color: white;
+            padding: 20px 30px;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 85px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            border-bottom: 4px solid #591b1b;
+        }
+        
+        .header-content {
+            flex: 1;
+        }
+        
+        .header h1 {
+            font-size: 1.7rem;
+            margin: 0;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.95;
+            margin-top: 5px;
+            font-weight: 400;
+        }
+        
+        .counter {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 25px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            min-width: 100px;
+            text-align: center;
+            white-space: nowrap;
+            margin-left: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(5px);
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: #f0bcbc;
+            flex-shrink: 0;
+            position: relative;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #d46b6b, #862a2a);
+            height: 100%;
+            width: 0%;
+            transition: width 0.4s ease;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 30px;
+            background: #fad7d7;
+        }
+        
+        .question-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            border: 3px solid #e7a1a1;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        
+        .question-header {
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+        
+        .question-number {
+            background: linear-gradient(145deg, #b34242, #862a2a);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            font-weight: bold;
+            flex-shrink: 0;
+            box-shadow: 0 6px 20px rgba(134,42,42,0.4);
+        }
+        
+        .question-text {
+            font-size: 1.4rem;
+            line-height: 1.7;
+            color: #591b1b;
+            flex-grow: 1;
+            font-weight: 600;
+            padding-right: 15px;
+        }
+        
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .option {
+            padding: 20px;
+            border: 3px solid #cfc0e3;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 1.15rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-color: #e7a1a1;
+        }
+        
+        .option:hover {
+            background: #fadfdf;
+            border-color: #c75b5b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(179,66,66,0.15);
+        }
+        
+        .option-letter {
+            background: linear-gradient(145deg, #b34242, #862a2a);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            border: 3px solid #591b1b;
+        }
+        
+        .option.correct {
+            background: linear-gradient(145deg, #66bb6a, #43a047);
+            border-color: #2e7d32;
+            color: white;
+        }
+        
+        .option.correct .option-letter {
+            background: #2e7d32;
+            color: white;
+            border-color: #1b5e20;
+        }
+        
+        .option.incorrect {
+            background: linear-gradient(145deg, #ef5350, #e53935);
+            border-color: #b71c1c;
+            color: white;
+        }
+        
+        .option.incorrect .option-letter {
+            background: #b71c1c;
+            color: white;
+            border-color: #8b0000;
+        }
+        
+        .feedback-area {
+            flex-shrink: 0;
+        }
+        
+        .feedback {
+            padding: 25px;
+            border-radius: 15px;
+            display: none;
+            align-items: center;
+            gap: 20px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            animation: slideIn 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .feedback.correct {
+            background: linear-gradient(145deg, #c8e6c9, #a5d6a7);
+            border: 3px solid #2e7d32;
+            color: #1b5e20;
+            display: flex;
+        }
+        
+        .feedback.incorrect {
+            background: linear-gradient(145deg, #ffcdd2, #ef9a9a);
+            border: 3px solid #b71c1c;
+            color: #710000;
+            display: flex;
+        }
+        
+        .feedback-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+        
+        .rationale {
+            background: linear-gradient(145deg, #fdecec, #f9dbdb);
+            border: 3px solid #b34242;
+            border-radius: 15px;
+            padding: 25px;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+        
+        .rationale.show {
+            display: block;
+        }
+        
+        .rationale h4 {
+            color: #862a2a;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.3rem;
+        }
+        
+        .rationale p {
+            color: #591b1b;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background: #cfc0e3;
+            border-top: 3px solid #bba8d7;
+            flex-shrink: 0;
+            height: 80px;
+            background: #f0bcbc;
+            border-top: 3px solid #e7a1a1;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 15px 35px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(145deg, #b34242, #862a2a);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(134,42,42,0.4);
+            background: linear-gradient(145deg, #862a2a, #591b1b);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(145deg, #cf7e7e, #b15959);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(177,89,89,0.4);
+            background: linear-gradient(145deg, #b15959, #8f4040);
+        }
+        
+        .btn-cancel {
+            background: linear-gradient(145deg, #ef5350, #e53935);
+            color: white;
+            display: none;
+        }
+        
+        .btn-cancel:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(229,57,53,0.4);
+            background: linear-gradient(145deg, #e53935, #c62828);
+        }
+        
+        .btn-cancel.show {
+            display: flex;
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                height: 75px;
+                padding: 15px 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.3rem;
+            }
+            
+            .question-text {
+                font-size: 1.2rem;
+            }
+            
+            .option {
+                padding: 15px;
+                font-size: 1.05rem;
+                gap: 15px;
+            }
+            
+            .option-letter {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .question-area {
+                padding: 20px;
+            }
+            
+            .navigation {
+                padding: 15px 20px;
+                height: 70px;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .nav-buttons {
+                gap: 10px;
+            }
+        }
+        
+        @media (max-height: 700px) {
+            .header {
+                height: 70px;
+                padding: 15px 20px;
+            }
+            
+            .question-area {
+                padding: 20px;
+            }
+            
+            .question-text {
+                font-size: 1.2rem;
+            }
+            
+            .option {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="header-content">
+            <h1>🔥 Chapter 57: Burn Injury</h1>
+            <div class="subtitle">39 NCLEX-style questions · fluid resuscitation, grafting, rehabilitation</div>
+        </div>
+        <div class="counter" id="counter">1/39</div>
+    </div>
+    
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    
+    <div class="main-content">
+        <div class="question-area">
+            <div class="question-header">
+                <div class="question-number" id="questionNumber">1</div>
+                <div class="question-text" id="question"></div>
+            </div>
+            
+            <div class="options-container" id="options"></div>
+        </div>
+        
+        <div class="feedback-area">
+            <div class="feedback" id="feedback">
+                <div class="feedback-icon" id="feedbackIcon"></div>
+                <div id="feedbackText"></div>
+            </div>
+            <div class="rationale" id="rationale">
+                <h4>📘 RATIONALE:</h4>
+                <p id="rationaleText"></p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="navigation">
+        <button class="btn btn-secondary" id="prevBtn" onclick="previousCard()">
+            ⬅️ Previous
+        </button>
+        <div class="nav-buttons">
+            <button class="btn btn-cancel" id="cancelBtn" onclick="cancelSelection()">
+                ❌ Cancel
+            </button>
+            <button class="btn btn-primary" id="nextBtn" onclick="nextCard()">
+                Next ➡️
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Chapter 57: Management of Patients with Burn Injury – exact 39 questions from document
+    const questions = [
+        {
+            id: 1,
+            question: "1. A client is brought to the emergency department from the site of a chemical fire, where the client suffered a burn that involves the epidermis, dermis, and the muscle and bone of the right arm. On inspection, the skin appears charred. Based on these assessment findings, what is the depth of the burn on the client's arm?",
+            options: [
+                "A. Superficial partial thickness",
+                "B. Deep partial thickness",
+                "C. Full partial thickness",
+                "D. Full thickness"
+            ],
+            correct: 3, // D
+            rationale: "A full-thickness burn involves total destruction of the epidermis and dermis and, in some cases, underlying tissue as well. Wound color ranges widely from white to red, brown, or black. The burned area is painless because the nerve fibers are destroyed. The wound can appear leathery; hair follicles and sweat glands are destroyed. Edema may also be present. Superficial partial-thickness burns involve the epidermis and possibly a portion of the dermis; the client will experience pain that is soothed by cooling. Deep partial-thickness burns involve the epidermis, upper dermis, and portion of the deeper dermis; the client will report pain and sensitivity to cold air. Full partial thickness is not a depth of burn. (PTS:1 REF:p.1867)"
+        },
+        {
+            id: 2,
+            question: "2. The current phase of a client's treatment for a burn injury prioritizes wound care, nutritional support, and prevention of complications such as infection. Based on these care priorities, the client is in what phase of burn care?",
+            options: [
+                "A. Emergent",
+                "B. Immediate resuscitative",
+                "C. Acute",
+                "D. Rehabilitation"
+            ],
+            correct: 2, // C
+            rationale: "The acute or intermediate phase of burn care follows the emergent/resuscitative phase and begins 48 to 72 hours after the burn injury. During this phase, attention is directed toward continued assessment and maintenance of respiratory and circulatory status, fluid and electrolyte balance, and gastrointestinal function. Infection prevention, burn wound care (i.e., wound cleaning, topical antibacterial therapy, wound dressing, dressing changes, wound débridement, and wound grafting), pain management, and nutritional support are priorities at this stage. Priorities during the emergent or immediate resuscitative phase include first aid, prevention of shock and respiratory distress, detection and treatment of concomitant injuries, and initial wound assessment and care. The priorities during the rehabilitation phase include prevention of scars and contractures, rehabilitation, functional and cosmetic reconstruction, and psychosocial counseling. (PTS:1 REF:p.1873)"
+        },
+        {
+            id: 3,
+            question: "3. A client in the emergent/resuscitative phase of a burn injury has had blood work and arterial blood gases drawn. Upon analysis of the client's laboratory studies, the nurse will expect the results to indicate what findings?",
+            options: [
+                "A. Hyperkalemia, hyponatremia, elevated hematocrit",
+                "B. Hypokalemia, hypernatremia, decreased hematocrit",
+                "C. Hyperkalemia, hypernatremia, decreased hematocrit",
+                "D. Hypokalemia, hyponatremia, elevated hematocrit"
+            ],
+            correct: 0, // A
+            rationale: "Fluid and electrolyte changes in the emergent/resuscitative phase of a burn injury include hyperkalemia related to the release of potassium into the extracellular fluid, hyponatremia from large amounts of sodium lost in trapped edema fluid, and hemoconcentration that leads to an increased hematocrit. (PTS:1 REF:p.1871)"
+        },
+        {
+            id: 4,
+            question: "4. A client has experienced an electrical burn and has developed thick eschar over the burn site. Which of the following topical antibacterial agents will the nurse expect the health care provider to order for the wound?",
+            options: [
+                "A. Silver sulfadiazine 1% (Silvadene) water-soluble cream",
+                "B. Mafenide acetate 10% (Sulfamylon) hydrophilic-based cream",
+                "C. Silver nitrate 0.5% aqueous solution",
+                "D. Acticoat"
+            ],
+            correct: 1, // B
+            rationale: "Mafenide acetate 10% hydrophilic-based cream is the agent of choice when there is a need to penetrate thick eschar. Silver products do not penetrate eschar; Acticoat is a type of silver dressing. (PTS:1 REF:p.1881)"
+        },
+        {
+            id: 5,
+            question: "5. An occupational health nurse is called to the floor of a factory where a worker has sustained a flash burn to the right arm. The nurse arrives and the flames have been extinguished. The next step is to 'cool the burn.' How should the nurse cool the burn?",
+            options: [
+                "A. Apply ice to the site of the burn for 5 to 10 minutes.",
+                "B. Wrap the client's affected extremity in ice until help arrives.",
+                "C. Apply an oil-based substance to the burned area until help arrives.",
+                "D. Wrap cool towels around the affected extremity intermittently."
+            ],
+            correct: 3, // D
+            rationale: "Once the burn has been sustained, the application of cool water is the best first-aid measure. Soaking the burn area intermittently in cool water or applying cool towels gives immediate and striking relief from pain, and limits local tissue edema and damage. However, never apply ice directly to the burn, never wrap the person in ice, and never use cold soaks or dressings for longer than several minutes; such procedures may worsen the tissue damage and lead to hypothermia in people with large burns. Oils are contraindicated. (PTS:1 REF:p.1874)"
+        },
+        {
+            id: 6,
+            question: "6. An emergency department nurse has just admitted a client with a burn. What characteristic of the burn will primarily determine whether the client experiences a systemic response to this injury?",
+            options: [
+                "A. The length of time since the burn",
+                "B. The location of burned skin surfaces",
+                "C. The source of the burn",
+                "D. The total body surface area (TBSA) affected by the burn"
+            ],
+            correct: 3, // D
+            rationale: "Systemic effects are a result of several variables. However, TBSA and wound severity are considered the major factors that affect the presence or absence of systemic effects. (PTS:1 REF:p.1868)"
+        },
+        {
+            id: 7,
+            question: "7. A nurse on a burn unit is caring for a client who experienced burn injuries 2 days ago. The client is now showing signs and symptoms of airway obstruction, despite appearing stable since admitted. How should the client's change in status be best understood?",
+            options: [
+                "A. The client is likely experiencing a delayed onset of respiratory complications",
+                "B. The client has likely developed a systemic infection",
+                "C. The client's respiratory complications are likely related to psychosocial stress",
+                "D. The client is likely experiencing an anaphylactic reaction to a medication"
+            ],
+            correct: 0, // A
+            rationale: "Airway obstruction caused by upper airway edema can take as long as 48 hours to develop. A systemic infection would be less likely to cause respiratory complications. This problem is more likely to be caused by physiologic factors at this phase, not psychological factors. Anaphylaxis must be ruled out, but it is less likely than a response to the initial injury. (PTS:1 REF:p.1876)"
+        },
+        {
+            id: 8,
+            question: "8. A client has been admitted to a burn intensive care unit with extensive full-thickness burns over 25% of the body. After ensuring cardiopulmonary stability, what would be the nurse's immediate, priority concern when planning this client's care?",
+            options: [
+                "A. Fluid status",
+                "B. Risk of infection",
+                "C. Nutritional status",
+                "D. Psychosocial coping"
+            ],
+            correct: 0, // A
+            rationale: "During the early phase of burn care, the nurse is most concerned with fluid resuscitation, to correct large-volume fluid loss through the damaged skin. Infection control and early nutritional support are important, but fluid resuscitation is an immediate priority. Coping is a higher priority later in the recovery period. (PTS:1 REF:p.1873)"
+        },
+        {
+            id: 9,
+            question: "9. The nurse is providing education to a client that is scheduled for mechanical débridement of a wound. The nurse knows that mechanical débridement involves which element?",
+            options: [
+                "A. A spontaneous separation of dead tissue from the viable tissue",
+                "B. Removal of eschar until the point of pain and bleeding occurs",
+                "C. Shaving of burned skin layers until bleeding, viable tissue is revealed",
+                "D. Early closure of the wound"
+            ],
+            correct: 1, // B
+            rationale: "Mechanical débridement can be achieved through the use of surgical scissors, scalpels, or forceps to remove the eschar until the point of pain and bleeding occurs. Mechanical débridement can also be accomplished through the use of topical enzymatic débridement agents. The spontaneous separation of dead tissue from the viable tissue is an example of natural débridement. Shaving the burned skin layers and early wound closure are examples of surgical débridement. (PTS:1 REF:p.1881)"
+        },
+        {
+            id: 10,
+            question: "10. A client with a partial-thickness burn injury had a xenograft applied 2 weeks ago. The nurse notices that the xenograft is separating from the burn wound. What is the nurse's most appropriate intervention?",
+            options: [
+                "A. Reinforce the xenograft dressing with another piece of Biobrane.",
+                "B. Remove the xenograft dressing and apply a new dressing.",
+                "C. Trim away the separated xenograft.",
+                "D. Notify the health care provider for further emergency-related orders."
+            ],
+            correct: 2, // C
+            rationale: "Xenografts adhere to granulation tissue. As the tissue heals the xenograft will become removed from the scar tissue. Applying more of the xenograft will not continue to heal the wound (as it is already healed). It is not an emergency and reinforcement is not necessary. (PTS:1 REF:p.1883)"
+        },
+        {
+            id: 11,
+            question: "11. An emergency department nurse learns from the paramedics that the team is transporting a client who has suffered injury from a scald from a hot kettle. What variables will the nurse consider when determining the depth of burn?",
+            options: [
+                "A. The causative agent",
+                "B. The client's pre-injury health status",
+                "C. The client's prognosis for recovery",
+                "D. The circumstances of the accident"
+            ],
+            correct: 0, // A
+            rationale: "The following factors are considered in determining the depth of a burn: how the injury occurred, causative agent (such as flame or scalding liquid), temperature of the burning agent, duration of contact with the agent, and thickness of the skin. The client's pre-injury status, circumstances of the accident, and prognosis for recovery are important, but are not considered when determining the depth of the burn. (PTS:1 REF:p.1868)"
+        },
+        {
+            id: 12,
+            question: "12. A nurse is caring for a client who has sustained a deep partial-thickness burn injury. In prioritizing the nursing diagnoses for the plan of care, the nurse will give the highest priority to what nursing diagnosis?",
+            options: [
+                "A. Activity intolerance",
+                "B. Anxiety",
+                "C. Ineffective coping",
+                "D. Acute pain"
+            ],
+            correct: 3, // D
+            rationale: "Pain is inevitable during recovery from any burn injury. Pain in the burn client has been described as one of the most severe types of acute pain. Management of the often-severe pain is one of the most difficult challenges facing the burn team. While the other nursing diagnoses listed are valid, the presence of pain may contribute to these diagnoses. Management of the client's pain is the priority, as it may have a direct correlation to the other listed nursing diagnoses. (PTS:1 REF:p.1884)"
+        },
+        {
+            id: 13,
+            question: "13. A triage nurse in the emergency department (ED) receives a phone call from a frantic parent who saw their 4-year-old child tip a pot of boiling water onto themselves. The parent has called an ambulance. What should the nurse in the ED receiving the call instruct the parent to do?",
+            options: [
+                "A. Cover the burn with ice and secure with a towel.",
+                "B. Apply butter to the area that is burned.",
+                "C. Immerse the child in a cool bath.",
+                "D. Avoid touching the burned area under any circumstances."
+            ],
+            correct: 2, // C
+            rationale: "After the flames or heat source have been removed or extinguished, the burned area and adherent clothing are soaked with cool water briefly to cool the wound and halt the burning process. Cool water is the best first-aid measure. Ice and butter are contraindicated. Appropriate first aid necessitates touching the burn. (PTS:1 REF:p.1874)"
+        },
+        {
+            id: 14,
+            question: "14. A nurse is teaching a client with a partial-thickness wound how to wear the elastic pressure garment. How often should the nurse instruct the client to wear this garment?",
+            options: [
+                "A. 4 to 6 hours a day for 6 months",
+                "B. During waking hours for 2 to 3 months after the injury",
+                "C. Continuously",
+                "D. At night while sleeping for a year after the injury"
+            ],
+            correct: 2, // C
+            rationale: "Elastic pressure garments are worn continuously (i.e., 24 hours a day). (PTS:1 REF:p.1889)"
+        },
+        {
+            id: 15,
+            question: "15. A client is brought to the ED by paramedics, who report that the client has partial-thickness burns on the chest and legs. The client has also suffered smoke inhalation. What is the priority in the care of a client who has been burned and suffered smoke inhalation?",
+            options: [
+                "A. Pain",
+                "B. Fluid balance",
+                "C. Anxiety and fear",
+                "D. Airway management"
+            ],
+            correct: 3, // D
+            rationale: "Systemic threats from a burn are the greatest threat to life. The ABCs of all trauma care apply during the early post-burn period. While all options should be addressed, pain, fluid balance, and anxiety and fear do not take precedence over airway management. (PTS:1 REF:p.1872)"
+        },
+        {
+            id: 16,
+            question: "16. A nurse is caring for a client in the emergent/resuscitative phase of burn injury. During this phase, the nurse should monitor for evidence of what alteration in laboratory values?",
+            options: [
+                "A. Sodium deficit",
+                "B. Decreased prothrombin time (PT)",
+                "C. Potassium deficit",
+                "D. Decreased hematocrit"
+            ],
+            correct: 0, // A
+            rationale: "Anticipated fluid and electrolyte changes that occur during the emergent/resuscitative phase of burn injury include sodium deficit, potassium excess, and elevated hematocrit. PT does not typically decrease. (PTS:1 REF:p.1851)"
+        },
+        {
+            id: 17,
+            question: "17. A nurse is developing a care plan for a client with a partial-thickness burn, and determines that an appropriate goal is to maintain position of joints in alignment. What is the best rationale for this intervention?",
+            options: [
+                "A. To prevent neuropathies",
+                "B. To prevent wound breakdown",
+                "C. To prevent contractures",
+                "D. To prevent heterotopic ossification"
+            ],
+            correct: 2, // C
+            rationale: "To prevent the complication of contractures, the nurse will establish a goal to maintain position of joints in alignment. Gentle range-of-motion exercises and a consult to PT and OT for exercises and positioning recommendations are also appropriate interventions for the prevention of contractures. Joint alignment is not maintained specifically for preventing neuropathy, wound breakdown, or heterotopic ossification. (PTS:1 REF:p.1888)"
+        },
+        {
+            id: 18,
+            question: "18. A client's burns have required a homograft. During the nurse's most recent assessment, the nurse observes that the graft is newly covered with purulent exudate. What is the nurse's most appropriate response?",
+            options: [
+                "A. Perform mechanical débridement to remove the exudate and prevent further infection.",
+                "B. Inform the primary care provider promptly because the graft may need to be removed.",
+                "C. Perform range-of-motion exercises to increase perfusion to the graft site and facilitate healing.",
+                "D. Document this finding as an expected phase of graft healing."
+            ],
+            correct: 1, // B
+            rationale: "An infected graft may need to be removed, thus the care provider should be promptly informed. ROM exercises will not resolve this problem, and the nurse would not independently perform débridement. (PTS:1 REF:p.1882)"
+        },
+        {
+            id: 19,
+            question: "19. A nurse who is taking care of a client with burns is asked by a family member why the client is losing so much weight. The client is currently in the intermediate phase of recovery. What would be the nurse's most appropriate response to the family member?",
+            options: [
+                "A. 'The client is on a calorie-restricted diet in order to divert energy to wound healing.'",
+                "B. 'The client's body has consumed fat deposits for fuel because calorie intake is lower than normal.'",
+                "C. 'The client actually hasn't lost weight. Instead, there's been a change in the distribution of body fat.'",
+                "D. 'The client lost many fluids while being treated in the emergency phase of burn care.'"
+            ],
+            correct: 1, // B
+            rationale: "Clients lose a great deal of weight during recovery from severe burns. Reserve fat deposits are catabolized as a result of hypermetabolism. Clients are not placed on a calorie restriction during recovery, and fluid losses would not account for weight loss later in the recovery period. Changes in the overall distribution of body fat do not occur. (PTS:1 REF:p.1884)"
+        },
+        {
+            id: 20,
+            question: "20. A nurse has reported for a shift at a busy burns and plastics unit in a large university hospital. Which client is most likely to have life-threatening complications?",
+            options: [
+                "A. A 4-year-old scald victim burned over 24% of the body",
+                "B. A 27-year-old male burned over 36% of his body in a car accident",
+                "C. A 39-year-old female client burned over 18% of her body",
+                "D. A 60-year-old male burned over 16% of his body in a brush fire"
+            ],
+            correct: 0, // A
+            rationale: "Young children and older adults continue to have increased morbidity and mortality when compared to other age groups with similar injuries and present a challenge for burn care. This is an important factor when determining the severity of injury and possible outcome for the client. (PTS:1 REF:p.1867)"
+        },
+        {
+            id: 21,
+            question: "21. A client is brought to the emergency department with a burn injury. The nurse knows that the first systemic event after a major burn injury is what event?",
+            options: [
+                "A. Hemodynamic instability",
+                "B. Gastrointestinal hypermotility",
+                "C. Respiratory arrest",
+                "D. Hypokalemia"
+            ],
+            correct: 0, // A
+            rationale: "The initial systemic event after a major burn injury is hemodynamic instability, which results from loss of capillary integrity and a subsequent shift of fluid, sodium, and protein from the intravascular space into the interstitial spaces. This precedes GI changes. Respiratory arrest may or may not occur, largely depending on the presence or absence of smoke inhalation. Hypokalemia does not take place in the initial phase of recovery. (PTS:1 REF:p.1871)"
+        },
+        {
+            id: 22,
+            question: "22. A client with severe burns is admitted to the intensive care unit to stabilize and begin fluid resuscitation before transport to the burn center. The nurse should monitor the client closely for what signs of the onset of burn shock?",
+            options: [
+                "A. Confusion",
+                "B. High fever",
+                "C. Decreased blood pressure",
+                "D. Sudden agitation"
+            ],
+            correct: 2, // C
+            rationale: "As fluid loss continues and vascular volume decreases, cardiac output continues to decrease and the blood pressure drops, marking the onset of burn shock. Shock and the accompanying hemodynamic changes are not normally accompanied by confusion, fever, or agitation. (PTS:1 REF:p.1872)"
+        },
+        {
+            id: 23,
+            question: "23. An emergency department nurse has just received a client with burn injuries brought in by ambulance. The paramedics have started a large-bore IV and covered the burn in cool towels. The burn is estimated as covering 24% of the client's body. How should the nurse best address the pathophysiologic changes resulting from major burns during the initial burn-shock period?",
+            options: [
+                "A. Administer IV fluids.",
+                "B. Administer broad-spectrum antibiotics.",
+                "C. Administer IV potassium chloride.",
+                "D. Administer packed red blood cells."
+            ],
+            correct: 0, // A
+            rationale: "Pathophysiologic changes resulting from major burns during the initial burn-shock period include massive fluid losses. Addressing these losses is a major priority in the initial phase of treatment. Antibiotics and PRBCs are not normally given. Potassium chloride would exacerbate the client's hyperkalemia. (PTS:1 REF:p.1871)"
+        },
+        {
+            id: 24,
+            question: "24. A client's burns are estimated at 36% of total body surface area; fluid resuscitation has been ordered in the emergency department. After establishing intravenous access, the nurse should anticipate the administration of what fluid?",
+            options: [
+                "A. 0.45% NaCl with 20 mEq/L KCl",
+                "B. 0.45% NaCl with 40 mEq/L KCl",
+                "C. Normal saline",
+                "D. Lactated Ringer"
+            ],
+            correct: 3, // D
+            rationale: "Fluid resuscitation with lactated Ringer (LR) should be initiated using the American Burn Association's (ABA) fluid resuscitation formulas. LR is the crystalloid of choice because its composition and osmolality most closely resemble plasma and because use of normal saline is associated with hyperchloremic acidosis. Potassium chloride solutions would exacerbate the hyperkalemia that occurs following burn injuries. (PTS:1 REF:p.1874)"
+        },
+        {
+            id: 25,
+            question: "25. A client is admitted to the burn unit after being transported a long distance. The client has burns to the groin area and circumferential burns to both upper thighs. When assessing the client's legs distal to the wound site, the nurse should be cognizant of the risk of what complication?",
+            options: [
+                "A. Ischemia",
+                "B. Referred pain",
+                "C. Cellulitis",
+                "D. Venous thromboembolism (VTE)"
+            ],
+            correct: 0, // A
+            rationale: "As edema increases, pressure on small blood vessels and nerves in the distal extremities causes an obstruction of blood flow and consequent ischemia. This complication is similar to compartment syndrome. Referred pain, cellulitis, and VTE are not noted complications that occur distal to the injury site. (PTS:1 REF:p.1871)"
+        },
+        {
+            id: 26,
+            question: "26. A client experienced a 33% TBSA burn 72 hours ago. The nurse observes that the client's hourly urine output has been steadily increasing over the past 24 hours. How should the nurse best respond to this finding?",
+            options: [
+                "A. Obtain an order to reduce the rate of the client's IV fluid infusion.",
+                "B. Report the client's early signs of acute kidney injury (AKI).",
+                "C. Recognize that the client is experiencing an expected onset of diuresis.",
+                "D. Administer sodium chloride as prescribed to compensate for this fluid loss."
+            ],
+            correct: 2, // C
+            rationale: "As capillaries regain integrity, 48 or more hours after the burn, fluid moves from the interstitial to the intravascular compartment and diuresis begins. This is an expected development and does not require a reduction in the IV infusion rate or the administration of NaCl. Diuresis is not suggestive of AKI. (PTS:1 REF:p.1876)"
+        },
+        {
+            id: 27,
+            question: "27. A public health nurse is educating a group of administrators about decreasing hospitalizations for burns. Which population will the nurse note as the target population for burn injuries?",
+            options: [
+                "A. Older adults",
+                "B. Women more than men",
+                "C. Adults 35-40 years of age",
+                "D. School-aged teenagers"
+            ],
+            correct: 0, // A
+            rationale: "The population that is most at risk for hospitalization are older adults. Statistically men have a higher incidence of burns over women. Adults from 35 to 40 years of age are not shown to have a high prevalence. School-aged teenagers do not have a higher prevalence of burns with hospitalization than the aging population. (PTS:1 REF:p.1866)"
+        },
+        {
+            id: 28,
+            question: "28. A nurse is performing a home visit to a client who is recovering following a long course of inpatient treatment for burn injuries. When performing this home visit, the nurse should do which of the following?",
+            options: [
+                "A. Assess the client for signs of electrolyte imbalances.",
+                "B. Administer fluids as prescribed.",
+                "C. Assess the risk for injury recurrence.",
+                "D. Assess the client's psychosocial state."
+            ],
+            correct: 3, // D
+            rationale: "Recovery from burns can be psychologically challenging; the nurse's assessments must address this reality. Fluid and electrolyte imbalances are infrequent during the rehabilitation phase of recovery. Burns are not typically a health problem that tends to recur; the experience of being burned tends to foster vigilance. (PTS:1 REF:p.1887)"
+        },
+        {
+            id: 29,
+            question: "29. A client has experienced burns to the upper thighs and knees. Following the application of new wound dressings, the nurse should perform what nursing action?",
+            options: [
+                "A. Instruct the client to keep the wound site in a dependent position.",
+                "B. Administer PRN analgesia as prescribed.",
+                "C. Assess the client's peripheral pulses distal to the dressing.",
+                "D. Assist with passive range-of-motion exercises to 'set' the new dressing."
+            ],
+            correct: 2, // C
+            rationale: "Dressings can impede circulation if they are wrapped too tightly. The peripheral pulses must be checked frequently and burned extremities elevated. Dependent positioning does not need to be maintained. PRN analgesics should be given prior to the dressing change. ROM exercises do not normally follow a dressing change. (PTS:1 REF:p.1861)"
+        },
+        {
+            id: 30,
+            question: "30. A nurse is caring for a client with burns who is in the later stages of the acute phase of recovery. The plan of nursing care should include which of the following nursing actions?",
+            options: [
+                "A. Maintenance of bed rest to aid healing",
+                "B. Choosing appropriate splints and functional devices",
+                "C. Administration of beta adrenergic blockers",
+                "D. Prevention of venous thromboembolism"
+            ],
+            correct: 3, // D
+            rationale: "Prevention of deep vein thrombosis (DVT) is an important factor in care. Early mobilization of the client is important. The nurse monitors the splints and functional devices, but these are selected by occupational and physical therapists. The hemodynamic changes accompanying burns do not normally require the use of beta blockers. (PTS:1 REF:p.1880)"
+        },
+        {
+            id: 31,
+            question: "31. A client is in the acute phase of a burn injury. One of the nursing diagnoses in the plan of care is Ineffective Coping Related to Trauma of Burn Injury. What interventions appropriately address this diagnosis? Select all that apply.",
+            options: [
+                "A. Promote truthful communication.",
+                "B. Avoid asking the client to make decisions.",
+                "C. Teach the client coping strategies.",
+                "D. Administer benzodiazepines as prescribed.",
+                "E. Provide positive reinforcement."
+            ],
+            correct: [0,2,4], // A, C, E
+            rationale: "The nurse can assist the client to develop effective coping strategies by setting specific expectations for behavior, promoting truthful communication to build trust, helping the client practice appropriate strategies, and giving positive reinforcement when appropriate. The client may benefit from being able to make decisions regarding his or her care. Benzodiazepines may be needed for short-term management of anxiety, but they are not used to enhance coping. (PTS:1 REF:p.1886)"
+        },
+        {
+            id: 32,
+            question: "32. A client who was burned in a workplace accident has completed the acute phase of treatment and the plan of care has been altered to prioritize rehabilitation. What nursing action should be prioritized during this phase of treatment?",
+            options: [
+                "A. Monitoring fluid and electrolyte imbalances",
+                "B. Providing education to the client and family",
+                "C. Treating infection",
+                "D. Promoting thermoregulation"
+            ],
+            correct: 1, // B
+            rationale: "Client and family education is a priority during rehabilitation. There should be no fluid and electrolyte imbalances in the rehabilitation phase. The presence of impaired thermoregulation or infection would suggest that the client is still in the acute phase of burn recovery. (PTS:1 REF:p.1886)"
+        },
+        {
+            id: 33,
+            question: "33. A burn client is transitioning from the acute phase of the injury to the rehabilitation phase. The client tells the nurse, 'I can't wait to have surgery to reconstruct my face so I look like I used to.' What would be the nurse's best response?",
+            options: [
+                "A. 'That's something that you and your doctor will likely talk about after your scars mature.'",
+                "B. 'That is something for you to talk to your doctor about because it's not a nursing responsibility.'",
+                "C. 'I know this is really important to you, but you have to realize that no one can make you look like you used to.'",
+                "D. 'Unfortunately, it's likely that these scars will look like this for the rest of your life.'"
+            ],
+            correct: 0, // A
+            rationale: "Burn reconstruction is a treatment option after all scars have matured and is discussed within the first few years after injury. Even though this is not a nursing responsibility, the nurse should still respond appropriately to the client's query. It is true that the client will not realistically look like he or she used to, but this does not instill hope. (PTS:1 REF:p.1889)"
+        },
+        {
+            id: 34,
+            question: "34. A client who is in the acute phase of recovery from a burn injury has yet to experience adequate pain control. What pain management strategy is most likely to meet this client's needs?",
+            options: [
+                "A. A client-controlled analgesia (PCA) system",
+                "B. Oral opioids supplemented by NSAIDs",
+                "C. Distraction and relaxation techniques supplemented by NSAIDs",
+                "D. A combination of benzodiazepines and topical anesthetics"
+            ],
+            correct: 0, // A
+            rationale: "The goal of treatment is to provide a long-acting analgesic that will provide even coverage for this long-term discomfort. It is helpful to use escalating doses when initiating the medication to reach the level of pain control that is acceptable to the client. The use of client-controlled analgesia (PCA) gives control to the client and achieves this goal. Clients cannot normally achieve adequate pain control without the use of opioids, and parenteral administration is usually required. (PTS:1 REF:p.1878)"
+        },
+        {
+            id: 35,
+            question: "35. The nurse caring for a client who is recovering from full-thickness burns is aware of the client's risk for contracture and hypertrophic scarring. How can the nurse best reduce this risk?",
+            options: [
+                "A. Apply skin emollients as prescribed after granulation has occurred.",
+                "B. Keep injured areas immobilized whenever possible to promote healing.",
+                "C. Administer oral or IV corticosteroids as prescribed.",
+                "D. Encourage physical activity and range-of-motion exercises."
+            ],
+            correct: 3, // D
+            rationale: "Exercise and the promotion of mobility can reduce the risk of contracture and hypertrophic scarring. Skin emollients are not normally used in the treatment of burns, and these do not prevent scarring. Steroids are not used to reduce scarring, as they also slow the healing process. (PTS:1 REF:p.1888)"
+        },
+        {
+            id: 36,
+            question: "36. While performing a client's ordered wound care for the treatment of a burn, the client has made a series of sarcastic remarks to the nurse and criticized the nurse's technique. How should the nurse best interpret this client's behavior?",
+            options: [
+                "A. The client may be experiencing an adverse drug reaction that is affecting cognition and behavior.",
+                "B. The client may be experiencing neurologic or psychiatric complications of the client's injuries.",
+                "C. The client may be experiencing inconsistencies in the care being provided.",
+                "D. The client may be experiencing anger about current circumstances that the client is deflecting toward the nurse."
+            ],
+            correct: 3, // D
+            rationale: "The client may experience feelings of anger. The anger may be directed outward toward those who escaped unharmed or toward those who are now providing care. While drug reactions, complications, and frustrating inconsistencies in care cannot be automatically ruled out, it is not uncommon for anger to be directed at caregivers. (PTS:1 REF:p.1885)"
+        },
+        {
+            id: 37,
+            question: "37. A home care nurse is performing a visit to a client's home to perform wound care following the client's hospital treatment for severe burns. While interacting with the client, the nurse should assess for evidence of what complication?",
+            options: [
+                "A. Psychosis",
+                "B. Posttraumatic stress disorder",
+                "C. Delirium",
+                "D. Vascular dementia"
+            ],
+            correct: 1, // B
+            rationale: "Posttraumatic stress disorder (PTSD) is the most common psychiatric disorder in burn survivors, with a prevalence that may be as high as 45%. As a result, it is important for the nurse to assess for this complication of burn injuries. Psychosis, delirium, and dementia are not among the noted psychiatric and psychosocial complications of burns. (PTS:1 REF:p.1868)"
+        },
+        {
+            id: 38,
+            question: "38. A nurse who provides care on a burn unit is preparing to apply a client's ordered topical antibiotic ointment. What action should the nurse perform when administering this medication?",
+            options: [
+                "A. Apply the new ointment without disturbing the existing layer of ointment.",
+                "B. Apply the ointment using a sterile tongue depressor.",
+                "C. Apply a layer of ointment approximately 1/16 inch thick.",
+                "D. Gently irrigate the wound bed after applying the antibiotic ointment."
+            ],
+            correct: 2, // C
+            rationale: "After removing the old ointment from the wound bed, the nurse should apply a layer of ointment 1/16-inch thick using clean gloves. The wound would not be irrigated after application of new ointment. (PTS:1 REF:p.1888)"
+        },
+        {
+            id: 39,
+            question: "39. A client arrives in the emergency department after being burned in a house fire. The client's burns cover the face and the left forearm. What extent of burns does the client most likely have, measured as a percentage?",
+            options: [
+                "A. 9%",
+                "B. 18%",
+                "C. 27%",
+                "D. 36%"
+            ],
+            correct: 1, // B (18%)
+            rationale: "When estimating the percentage of body area or burn surface area that has been burned, the Rule of Nines is used: the face is 9% and the forearm is 9%, for a total of 18% in this client. (PTS:1 REF:p.1868)"
+        }
+    ];
+
+    let currentQuestion = 0;
+    let selectedOption = null;
+    let answers = Array(questions.length).fill(null);
+
+    function loadQuestion() {
+        const q = questions[currentQuestion];
+        if (!q) return;
+
+        const progress = ((currentQuestion + 1) / questions.length) * 100;
+        document.getElementById('progressBar').style.width = `${progress}%`;
+        document.getElementById('counter').textContent = `${currentQuestion + 1}/${questions.length}`;
+        document.getElementById('questionNumber').textContent = q.id;
+
+        document.getElementById('question').innerHTML = q.question;
+        loadOptions(q);
+
+        document.getElementById('feedback').style.display = 'none';
+        document.getElementById('rationale').classList.remove('show');
+        document.getElementById('cancelBtn').classList.remove('show');
+
+        document.getElementById('prevBtn').disabled = currentQuestion === 0;
+        const stored = answers[q.id - 1];
+        document.getElementById('nextBtn').disabled = stored === null || stored === undefined;
+        document.getElementById('nextBtn').textContent = currentQuestion >= questions.length - 1 ? 'Finish ➡️' : 'Next ➡️';
+    }
+
+    function loadOptions(q) {
+        const container = document.getElementById('options');
+        container.innerHTML = '';
+        q.options.forEach((opt, idx) => {
+            const div = document.createElement('div');
+            div.className = 'option';
+            div.innerHTML = `<div class="option-letter">${String.fromCharCode(65 + idx)}</div><div>${opt}</div>`;
+            div.onclick = () => selectOption(idx);
+            container.appendChild(div);
+        });
+
+        const saved = answers[q.id - 1];
+        if (saved !== null && saved !== undefined) {
+            selectOption(saved, true);
+        }
+    }
+
+    function selectOption(index, fromMemory = false) {
+        const q = questions[currentQuestion];
+        if (!fromMemory && selectedOption !== null) return;
+
+        if (!fromMemory) {
+            selectedOption = index;
+            answers[q.id - 1] = index;
+        }
+
+        highlightSelected(index, q);
+        showFeedback(index, q);
+        document.getElementById('nextBtn').disabled = false;
+        document.getElementById('cancelBtn').classList.add('show');
+    }
+
+    function highlightSelected(index, q) {
+        const opts = document.querySelectorAll('.option');
+        opts.forEach((opt, i) => opt.classList.remove('correct', 'incorrect'));
+
+        const correctIndices = Array.isArray(q.correct) ? q.correct : [q.correct];
+        if (Array.isArray(q.correct)) {
+            correctIndices.forEach(ci => opts[ci]?.classList.add('correct'));
+            if (!correctIndices.includes(index)) {
+                opts[index]?.classList.add('incorrect');
+            }
+        } else {
+            if (index === q.correct) {
+                opts[index].classList.add('correct');
+            } else {
+                opts[index].classList.add('incorrect');
+                opts[q.correct].classList.add('correct');
+            }
+        }
+    }
+
+    function showFeedback(index, q) {
+        const fb = document.getElementById('feedback');
+        const icon = document.getElementById('feedbackIcon');
+        const text = document.getElementById('feedbackText');
+        const rationaleDiv = document.getElementById('rationale');
+        const rationaleP = document.getElementById('rationaleText');
+
+        const correctIndices = Array.isArray(q.correct) ? q.correct : [q.correct];
+        const isCorrect = correctIndices.includes(index);
+
+        if (isCorrect) {
+            fb.className = 'feedback correct';
+            icon.textContent = '✅';
+            text.textContent = 'CORRECT! Well done.';
+        } else {
+            fb.className = 'feedback incorrect';
+            icon.textContent = '❌';
+            const letters = correctIndices.map(c => String.fromCharCode(65 + c)).join(', ');
+            text.textContent = `INCORRECT. The correct answer(s): ${letters}`;
+        }
+
+        fb.style.display = 'flex';
+        rationaleP.innerHTML = q.rationale;
+        rationaleDiv.classList.add('show');
+    }
+
+    function cancelSelection() {
+        const q = questions[currentQuestion];
+        selectedOption = null;
+        answers[q.id - 1] = null;
+        document.querySelectorAll('.option').forEach(opt => opt.classList.remove('correct', 'incorrect'));
+        document.getElementById('feedback').style.display = 'none';
+        document.getElementById('rationale').classList.remove('show');
+        document.getElementById('cancelBtn').classList.remove('show');
+        document.getElementById('nextBtn').disabled = true;
+    }
+
+    function nextCard() {
+        if (currentQuestion < questions.length - 1) {
+            currentQuestion++;
+            selectedOption = null;
+            loadQuestion();
+        } else {
+            currentQuestion = 0;
+            loadQuestion();
+        }
+    }
+
+    function previousCard() {
+        if (currentQuestion > 0) {
+            currentQuestion--;
+            const q = questions[currentQuestion];
+            selectedOption = answers[q.id - 1];
+            loadQuestion();
+        }
+    }
+
+    // keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+        if (e.key >= '1' && e.key <= '4') selectOption(parseInt(e.key)-1);
+        else if (e.key >= 'a' && e.key <= 'd') selectOption(e.key.charCodeAt(0)-97);
+        else if (e.key >= 'A' && e.key <= 'D') selectOption(e.key.charCodeAt(0)-65);
+        else if (e.key === 'ArrowLeft' && !document.getElementById('prevBtn').disabled) previousCard();
+        else if (e.key === 'ArrowRight' && !document.getElementById('nextBtn').disabled) nextCard();
+        else if (e.key === 'Escape' && document.getElementById('cancelBtn').classList.contains('show')) cancelSelection();
+    });
+
+    loadQuestion();
+</script>
+</body>
+</html>
